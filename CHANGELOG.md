@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/CloudNationHQ/terraform-azure-fw/compare/v1.0.1...v1.0.2) (2024-09-17)
+
+
+### Bug Fixes
+
+* remove redundant provider block ([#6](https://github.com/CloudNationHQ/terraform-azure-fw/issues/6)) ([d79d487](https://github.com/CloudNationHQ/terraform-azure-fw/commit/d79d4874329ec9bb342da4e975cad9dd2f86f86d))
+
 ## [1.0.1](https://github.com/CloudNationHQ/terraform-azure-fw/compare/v1.0.0...v1.0.1) (2024-09-17)
 
 
