@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/CloudNationHQ/terraform-azure-fw/compare/v1.0.0...v1.0.1) (2024-09-17)
+
+
+### Bug Fixes
+
+* set default threat intelligence mode to null instead of alert ([#4](https://github.com/CloudNationHQ/terraform-azure-fw/issues/4)) ([5d07f9a](https://github.com/CloudNationHQ/terraform-azure-fw/commit/5d07f9ae47b2477e4a0694b9dad69359903860f5))
+
 ## 1.0.0 (2024-09-12)
 
 
