@@ -8,7 +8,7 @@ resource "azurerm_firewall" "fw" {
   firewall_policy_id  = try(var.instance.firewall_policy_id, null)
   dns_proxy_enabled   = try(var.instance.dns_proxy_enabled, false)
   dns_servers         = try(var.instance.dns_servers, null)
-  threat_intel_mode   = try(var.instance.threat_intel_mode, "Alert")
+  threat_intel_mode   = try(var.instance.threat_intel_mode, null)
   private_ip_ranges   = try(var.instance.private_ip_ranges, null)
   zones               = try(var.instance.zones, null)
   tags                = try(var.instance.tags, var.tags, {})
