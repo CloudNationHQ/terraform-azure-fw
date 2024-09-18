@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/CloudNationHQ/terraform-azure-fw/compare/v1.0.2...v1.0.3) (2024-09-18)
+
+
+### Bug Fixes
+
+* add public ip addresses output ([#10](https://github.com/CloudNationHQ/terraform-azure-fw/issues/10)) ([741fdc9](https://github.com/CloudNationHQ/terraform-azure-fw/commit/741fdc923c06c0ff2324eded82740e8a9dfc6f93))
+
 ## [1.0.2](https://github.com/CloudNationHQ/terraform-azure-fw/compare/v1.0.1...v1.0.2) (2024-09-17)
 
 
