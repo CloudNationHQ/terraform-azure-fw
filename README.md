@@ -60,6 +60,7 @@ End-to-end testing is not conducted on these modules, as they are individual com
 | Name | Description |
 | :-- | :-- |
 | `instance` | contains firewall configuration |
+| `public_ip_addresses` | public ip addresses associated with the firewall |
 
 ## Testing
 
