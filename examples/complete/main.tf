@@ -7,7 +7,7 @@ module "naming" {
 
 module "rg" {
   source  = "cloudnationhq/rg/azure"
-  version = "~> 1.0"
+  version = "~> 2.0"
 
   groups = {
     demo = {
@@ -20,7 +20,7 @@ module "rg" {
 
 module "network" {
   source  = "cloudnationhq/vnet/azure"
-  version = "~> 3.0"
+  version = "~> 4.0"
 
   naming = local.naming
 
@@ -45,7 +45,7 @@ module "network" {
 
 module "public_ips" {
   source  = "cloudnationhq/pip/azure"
-  version = "~> 1.0"
+  version = "~> 2.0"
 
   configs = {
     name           = module.naming.public_ip.name
@@ -58,7 +58,7 @@ module "public_ips" {
 
 module "firewall" {
   source  = "cloudnationhq/fw/azure"
-  version = "~> 1.0"
+  version = "~> 2.0"
 
   instance = {
     name              = module.naming.firewall.name
