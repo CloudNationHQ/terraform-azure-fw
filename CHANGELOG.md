@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.3.0](https://github.com/CloudNationHQ/terraform-azure-fw/compare/v2.2.0...v2.3.0) (2025-01-20)
+
+
+### Features
+
+* **deps:** bump github.com/gruntwork-io/terratest in /tests ([#20](https://github.com/CloudNationHQ/terraform-azure-fw/issues/20)) ([dcd91c8](https://github.com/CloudNationHQ/terraform-azure-fw/commit/dcd91c8c3e70836dfb9ab243c449a1de1ebc328a))
+* **deps:** bump golang.org/x/net from 0.31.0 to 0.33.0 in /tests ([#23](https://github.com/CloudNationHQ/terraform-azure-fw/issues/23)) ([da4c6d8](https://github.com/CloudNationHQ/terraform-azure-fw/commit/da4c6d8c5d6e372d448d8b01a8340b83aa3fc657))
+* remove temporary files when deployment tests fails ([#21](https://github.com/CloudNationHQ/terraform-azure-fw/issues/21)) ([573f27f](https://github.com/CloudNationHQ/terraform-azure-fw/commit/573f27fdc2d4e46e93e0e7a5e2116e52316b4f0a))
+
 ## [2.2.0](https://github.com/CloudNationHQ/terraform-azure-fw/compare/v2.1.0...v2.2.0) (2024-11-11)
 
 
