@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.4.0](https://github.com/CloudNationHQ/terraform-azure-fw/compare/v2.3.0...v2.4.0) (2025-02-24)
+
+
+### Features
+
+* **deps:** bump github.com/gruntwork-io/terratest in /tests ([#25](https://github.com/CloudNationHQ/terraform-azure-fw/issues/25)) ([cf68fcc](https://github.com/CloudNationHQ/terraform-azure-fw/commit/cf68fccb97117a4f07406bdba5f18057d670b8c5))
+
+
+### Bug Fixes
+
+* fix output to use public_ip_address_id for AZFW_VNet sku and revise complete example ([#27](https://github.com/CloudNationHQ/terraform-azure-fw/issues/27)) ([9d2b2ea](https://github.com/CloudNationHQ/terraform-azure-fw/commit/9d2b2ea894d98266c7a87812bde15df015917fee))
+
 ## [2.3.0](https://github.com/CloudNationHQ/terraform-azure-fw/compare/v2.2.0...v2.3.0) (2025-01-20)
 
 
