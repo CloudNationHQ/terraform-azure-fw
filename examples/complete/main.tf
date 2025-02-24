@@ -48,11 +48,13 @@ module "public_ips" {
   version = "~> 2.0"
 
   configs = {
-    name           = module.naming.public_ip.name
-    location       = module.rg.groups.demo.location
-    resource_group = module.rg.groups.demo.name
+    pub1 = {
+      name           = module.naming.public_ip.name
+      location       = module.rg.groups.demo.location
+      resource_group = module.rg.groups.demo.name
 
-    zones = ["1", "2", "3"]
+      zones = ["1", "2", "3"]
+    }
   }
 }
 
@@ -82,7 +84,7 @@ module "firewall" {
     management_ip_configuration = {
       name                 = "config_mgt"
       subnet_id            = module.network.subnets.fwmgmt.id
-      public_ip_address_id = module.public_ip.configs.id
+      public_ip_address_id = module.public_ips.configs.pub1.id
     }
   }
 }
