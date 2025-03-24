@@ -38,14 +38,6 @@ variable "instance" {
     condition     = var.instance.resource_group != null || var.resource_group != null
     error_message = "resource group name must be provided either in the instance object or as a separate variable."
   }
-
-  validation {
-    condition = (
-      var.instance.ip_configurations == {} ||
-      length([for ip in values(var.instance.ip_configurations) : ip if ip.subnet_id != null]) == 1
-    )
-    error_message = "exactly one ip configuration must contain a subnet_id when ip configurations are provided."
-  }
 }
 
 variable "location" {
