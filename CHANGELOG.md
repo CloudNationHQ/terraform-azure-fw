@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.1](https://github.com/CloudNationHQ/terraform-azure-fw/compare/v2.5.0...v2.5.1) (2025-03-24)
+
+
+### Bug Fixes
+
+* remove faulty validation ([#33](https://github.com/CloudNationHQ/terraform-azure-fw/issues/33)) ([21f7f6d](https://github.com/CloudNationHQ/terraform-azure-fw/commit/21f7f6d52a7d81edd9f5ecdde3b0e13f40bb0e0f))
+
 ## [2.5.0](https://github.com/CloudNationHQ/terraform-azure-fw/compare/v2.4.0...v2.5.0) (2025-03-24)
 
 
