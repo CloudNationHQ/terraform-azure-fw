@@ -1,6 +1,51 @@
 variable "instance" {
-  description = "contains firewall configuration"
-  type        = any
+  description = "Contains all firewall configuration"
+  type = object({
+    name               = string
+    resource_group     = optional(string, null)
+    location           = optional(string, null)
+    sku_tier           = string
+    sku_name           = string
+    firewall_policy_id = optional(string, null)
+    dns_proxy_enabled  = optional(bool, false)
+    dns_servers        = optional(list(string), null)
+    threat_intel_mode  = optional(string, null)
+    private_ip_ranges  = optional(list(string), null)
+    zones              = optional(list(string), null)
+    tags               = optional(map(string), null)
+    virtual_hub = optional(object({
+      virtual_hub_id  = string
+      public_ip_count = optional(number, 1)
+    }), null)
+    management_ip_configuration = optional(object({
+      name                 = string
+      subnet_id            = string
+      public_ip_address_id = string
+    }), null)
+    ip_configurations = optional(map(object({
+      name                 = string
+      subnet_id            = optional(string, null)
+      public_ip_address_id = optional(string, null)
+    })), {})
+  })
+
+  validation {
+    condition     = var.instance.location != null || var.location != null
+    error_message = "location must be provided either in the instance object or as a separate variable."
+  }
+
+  validation {
+    condition     = var.instance.resource_group != null || var.resource_group != null
+    error_message = "resource group name must be provided either in the instance object or as a separate variable."
+  }
+
+  validation {
+    condition = (
+      var.instance.ip_configurations == {} ||
+      length([for ip in values(var.instance.ip_configurations) : ip if ip.subnet_id != null]) == 1
+    )
+    error_message = "exactly one ip configuration must contain a subnet_id when ip configurations are provided."
+  }
 }
 
 variable "location" {
