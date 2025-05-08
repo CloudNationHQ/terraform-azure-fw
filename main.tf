@@ -3,8 +3,8 @@ resource "azurerm_firewall" "fw" {
 
   resource_group_name = coalesce(
     lookup(
-      var.instance, "resource_group", null
-    ), var.resource_group
+      var.instance, "resource_group_name", null
+    ), var.resource_group_name
   )
 
   location = coalesce(
@@ -22,8 +22,8 @@ resource "azurerm_firewall" "fw" {
   private_ip_ranges  = var.instance.private_ip_ranges
   zones              = var.instance.zones
 
-  tags = try(
-    var.instance.tags, var.tags, {}
+  tags = coalesce(
+    var.instance.tags, var.tags
   )
 
   dynamic "virtual_hub" {

@@ -1,18 +1,18 @@
 variable "instance" {
   description = "Contains all firewall configuration"
   type = object({
-    name               = string
-    resource_group     = optional(string, null)
-    location           = optional(string, null)
-    sku_tier           = string
-    sku_name           = string
-    firewall_policy_id = optional(string, null)
-    dns_proxy_enabled  = optional(bool, false)
-    dns_servers        = optional(list(string), null)
-    threat_intel_mode  = optional(string, null)
-    private_ip_ranges  = optional(list(string), null)
-    zones              = optional(list(string), null)
-    tags               = optional(map(string), null)
+    name                = string
+    resource_group_name = optional(string, null)
+    location            = optional(string, null)
+    sku_tier            = string
+    sku_name            = string
+    firewall_policy_id  = optional(string, null)
+    dns_proxy_enabled   = optional(bool, false)
+    dns_servers         = optional(list(string), null)
+    threat_intel_mode   = optional(string, null)
+    private_ip_ranges   = optional(list(string), null)
+    zones               = optional(list(string), null)
+    tags                = optional(map(string))
     virtual_hub = optional(object({
       virtual_hub_id  = string
       public_ip_count = optional(number, 1)
@@ -35,7 +35,7 @@ variable "instance" {
   }
 
   validation {
-    condition     = var.instance.resource_group != null || var.resource_group != null
+    condition     = var.instance.resource_group_name != null || var.resource_group_name != null
     error_message = "resource group name must be provided either in the instance object or as a separate variable."
   }
 }
@@ -46,7 +46,7 @@ variable "location" {
   default     = null
 }
 
-variable "resource_group" {
+variable "resource_group_name" {
   description = "default resource group to be used."
   type        = string
   default     = null
