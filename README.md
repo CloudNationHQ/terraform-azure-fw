@@ -41,18 +41,18 @@ Type:
 
 ```hcl
 object({
-    name               = string
-    resource_group     = optional(string, null)
-    location           = optional(string, null)
-    sku_tier           = string
-    sku_name           = string
-    firewall_policy_id = optional(string, null)
-    dns_proxy_enabled  = optional(bool, false)
-    dns_servers        = optional(list(string), null)
-    threat_intel_mode  = optional(string, null)
-    private_ip_ranges  = optional(list(string), null)
-    zones              = optional(list(string), null)
-    tags               = optional(map(string), null)
+    name                = string
+    resource_group_name = optional(string, null)
+    location            = optional(string, null)
+    sku_tier            = string
+    sku_name            = string
+    firewall_policy_id  = optional(string, null)
+    dns_proxy_enabled   = optional(bool, false)
+    dns_servers         = optional(list(string), null)
+    threat_intel_mode   = optional(string, null)
+    private_ip_ranges   = optional(list(string), null)
+    zones               = optional(list(string), null)
+    tags                = optional(map(string))
     virtual_hub = optional(object({
       virtual_hub_id  = string
       public_ip_count = optional(number, 1)
@@ -82,7 +82,7 @@ Type: `string`
 
 Default: `null`
 
-### <a name="input_resource_group"></a> [resource\_group](#input\_resource\_group)
+### <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name)
 
 Description: default resource group to be used.
 

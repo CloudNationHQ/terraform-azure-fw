@@ -68,17 +68,17 @@ module "public_ips" {
 
 module "firewall" {
   source  = "cloudnationhq/fw/azure"
-  version = "~> 2.0"
+  version = "~> 3.0"
 
   instance = {
-    name              = module.naming.firewall.name
-    resource_group    = module.rg.groups.demo.name
-    location          = module.rg.groups.demo.location
-    sku_name          = "AZFW_VNet"
-    sku_tier          = "Standard"
-    dns_servers       = ["168.63.129.16"]
-    dns_proxy_enabled = true
-    threat_intel_mode = "Alert"
+    name                = module.naming.firewall.name
+    resource_group_name = module.rg.groups.demo.name
+    location            = module.rg.groups.demo.location
+    sku_name            = "AZFW_VNet"
+    sku_tier            = "Standard"
+    dns_servers         = ["168.63.129.16"]
+    dns_proxy_enabled   = true
+    threat_intel_mode   = "Alert"
 
     ip_configurations = {
       ipconfig1 = {
