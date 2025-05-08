@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.0](https://github.com/CloudNationHQ/terraform-azure-fw/compare/v2.5.2...v3.0.0) (2025-05-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* The data structure changed, causing a recreate on existing resources.
+
+### Features
+
+* small refactor ([#38](https://github.com/CloudNationHQ/terraform-azure-fw/issues/38)) ([3b9d55b](https://github.com/CloudNationHQ/terraform-azure-fw/commit/3b9d55b4b864fc14c0226c81e51d1278b6370f3e))
+
 ## [2.5.2](https://github.com/CloudNationHQ/terraform-azure-fw/compare/v2.5.1...v2.5.2) (2025-04-14)
 
 
