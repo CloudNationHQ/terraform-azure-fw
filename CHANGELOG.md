@@ -7,6 +7,11 @@
 
 * The data structure changed, causing a recreate on existing resources.
 
+### Upgrade from v2.5.2 to v3.0.0:
+
+- Update module reference to: `version = "~> 3.0"`
+- The property and variable resource_group is renamed to resource_group_name
+
 ### Features
 
 * small refactor ([#38](https://github.com/CloudNationHQ/terraform-azure-fw/issues/38)) ([3b9d55b](https://github.com/CloudNationHQ/terraform-azure-fw/commit/3b9d55b4b864fc14c0226c81e51d1278b6370f3e))
