@@ -70,6 +70,8 @@ module "firewall" {
   source  = "cloudnationhq/fw/azure"
   version = "~> 3.0"
 
+  naming = local.naming
+
   instance = {
     name                = module.naming.firewall.name
     resource_group_name = module.rg.groups.demo.name
@@ -81,14 +83,12 @@ module "firewall" {
     threat_intel_mode   = "Alert"
 
     ip_configurations = {
-      ipconfig1 = {
-        name                 = "ipconfig1"
+      pub1 = {
         subnet_id            = module.network.subnets.fw1.id
         public_ip_address_id = module.public_ips.configs.pub1.id
       }
 
-      ipconfig2 = {
-        name                 = "ipconfig2"
+      pub2 = {
         public_ip_address_id = module.public_ips.configs.pub2.id
       }
     }

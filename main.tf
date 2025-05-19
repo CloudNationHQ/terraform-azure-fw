@@ -49,7 +49,11 @@ resource "azurerm_firewall" "fw" {
     for_each = lookup(var.instance, "ip_configurations", {})
 
     content {
-      name                 = ip_configuration.value.name
+      name = coalesce(
+        ip_configuration.value.name,
+        try(join("-", [var.naming.firewall, ip_configuration.key]), null),
+        ip_configuration.key
+      )
       subnet_id            = ip_configuration.value.subnet_id
       public_ip_address_id = ip_configuration.value.public_ip_address_id
     }
