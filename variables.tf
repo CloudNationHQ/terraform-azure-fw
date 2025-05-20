@@ -23,7 +23,7 @@ variable "instance" {
       public_ip_address_id = string
     }), null)
     ip_configurations = optional(map(object({
-      name                 = string
+      name                 = optional(string, null)
       subnet_id            = optional(string, null)
       public_ip_address_id = optional(string, null)
     })), {})
@@ -38,6 +38,12 @@ variable "instance" {
     condition     = var.instance.resource_group_name != null || var.resource_group_name != null
     error_message = "resource group name must be provided either in the instance object or as a separate variable."
   }
+}
+
+variable "naming" {
+  description = "contains naming convention"
+  type        = map(string)
+  default     = {}
 }
 
 variable "location" {
