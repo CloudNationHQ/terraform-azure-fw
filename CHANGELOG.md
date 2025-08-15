@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.1.0](https://github.com/CloudNationHQ/terraform-azure-fw/compare/v3.0.0...v3.1.0) (2025-08-15)
+
+
+### Features
+
+* **deps:** bump github.com/cloudnationhq/az-cn-go-validor in /tests ([#40](https://github.com/CloudNationHQ/terraform-azure-fw/issues/40)) ([6e341a9](https://github.com/CloudNationHQ/terraform-azure-fw/commit/6e341a95b07eee84ae80ba0b099c99b15230c753))
+* implement flexible resource naming ([#41](https://github.com/CloudNationHQ/terraform-azure-fw/issues/41)) ([4669c4d](https://github.com/CloudNationHQ/terraform-azure-fw/commit/4669c4d452180d5a7c2e94ebd75bcf5009495020))
+
 ## [3.0.0](https://github.com/CloudNationHQ/terraform-azure-fw/compare/v2.5.2...v3.0.0) (2025-05-08)
 
 
