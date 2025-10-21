@@ -46,7 +46,9 @@ resource "azurerm_firewall" "fw" {
   }
 
   dynamic "ip_configuration" {
-    for_each = lookup(var.instance, "ip_configurations", {})
+    for_each = lookup(
+      var.instance, "ip_configurations", {}
+    )
 
     content {
       name = coalesce(
@@ -54,6 +56,7 @@ resource "azurerm_firewall" "fw" {
         try(join("-", [var.naming.firewall, ip_configuration.key]), null),
         ip_configuration.key
       )
+
       subnet_id            = ip_configuration.value.subnet_id
       public_ip_address_id = ip_configuration.value.public_ip_address_id
     }
