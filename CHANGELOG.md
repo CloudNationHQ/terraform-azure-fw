@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.1.0](https://github.com/CloudNationHQ/terraform-azure-fw/compare/v3.0.0...v3.1.0) (2025-10-21)
+
+
+### Features
+
+* **deps:** bump github.com/cloudnationhq/az-cn-go-validor in /tests ([#40](https://github.com/CloudNationHQ/terraform-azure-fw/issues/40)) ([6e341a9](https://github.com/CloudNationHQ/terraform-azure-fw/commit/6e341a95b07eee84ae80ba0b099c99b15230c753))
+* **deps:** bump github.com/cloudnationhq/az-cn-go-validor in /tests ([#49](https://github.com/CloudNationHQ/terraform-azure-fw/issues/49)) ([52e6c8f](https://github.com/CloudNationHQ/terraform-azure-fw/commit/52e6c8f47cda2591651aabae7dfa9276bc2fb738))
+* **deps:** bump github.com/ulikunitz/xz from 0.5.10 to 0.5.14 in /tests ([#45](https://github.com/CloudNationHQ/terraform-azure-fw/issues/45)) ([8156ed5](https://github.com/CloudNationHQ/terraform-azure-fw/commit/8156ed5c6425fc5966665129a9ff2609cf96dbeb))
+* implement flexible resource naming ([#41](https://github.com/CloudNationHQ/terraform-azure-fw/issues/41)) ([4669c4d](https://github.com/CloudNationHQ/terraform-azure-fw/commit/4669c4d452180d5a7c2e94ebd75bcf5009495020))
+* remove unneeded null values from type definitions ([#50](https://github.com/CloudNationHQ/terraform-azure-fw/issues/50)) ([9a6da07](https://github.com/CloudNationHQ/terraform-azure-fw/commit/9a6da0726f2c755f476190a320d2d7dd5e40373b))
+
 ## [3.0.0](https://github.com/CloudNationHQ/terraform-azure-fw/compare/v2.5.2...v3.0.0) (2025-05-08)
 
 
