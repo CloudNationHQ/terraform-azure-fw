@@ -42,30 +42,30 @@ Type:
 ```hcl
 object({
     name                = string
-    resource_group_name = optional(string, null)
-    location            = optional(string, null)
+    resource_group_name = optional(string)
+    location            = optional(string)
     sku_tier            = string
     sku_name            = string
-    firewall_policy_id  = optional(string, null)
+    firewall_policy_id  = optional(string)
     dns_proxy_enabled   = optional(bool, false)
-    dns_servers         = optional(list(string), null)
-    threat_intel_mode   = optional(string, null)
-    private_ip_ranges   = optional(list(string), null)
-    zones               = optional(list(string), null)
+    dns_servers         = optional(list(string))
+    threat_intel_mode   = optional(string)
+    private_ip_ranges   = optional(list(string))
+    zones               = optional(list(string))
     tags                = optional(map(string))
     virtual_hub = optional(object({
       virtual_hub_id  = string
       public_ip_count = optional(number, 1)
-    }), null)
+    }))
     management_ip_configuration = optional(object({
       name                 = string
       subnet_id            = string
       public_ip_address_id = string
-    }), null)
+    }))
     ip_configurations = optional(map(object({
-      name                 = optional(string, null)
-      subnet_id            = optional(string, null)
-      public_ip_address_id = optional(string, null)
+      name                 = optional(string)
+      subnet_id            = optional(string)
+      public_ip_address_id = string
     })), {})
   })
 ```

@@ -1,6 +1,6 @@
 module "naming" {
   source  = "cloudnationhq/naming/azure"
-  version = "~> 0.1"
+  version = "~> 0.25"
 
   suffix = ["demo", "dev"]
 }
@@ -20,15 +20,15 @@ module "rg" {
 
 module "network" {
   source  = "cloudnationhq/vnet/azure"
-  version = "~> 8.0"
+  version = "~> 9.0"
 
   naming = local.naming
 
   vnet = {
-    name           = module.naming.virtual_network.name
-    location       = module.rg.groups.demo.location
-    resource_group = module.rg.groups.demo.name
-    address_space  = ["10.18.0.0/16"]
+    name                = module.naming.virtual_network.name
+    location            = module.rg.groups.demo.location
+    resource_group_name = module.rg.groups.demo.name
+    address_space       = ["10.18.0.0/16"]
 
     subnets = {
       fw1 = {
@@ -41,27 +41,21 @@ module "network" {
 
 module "public_ips" {
   source  = "cloudnationhq/pip/azure"
-  version = "~> 2.0"
+  version = "~> 4.0"
 
   naming = local.naming
 
-  resource_group = module.rg.groups.demo.name
-  location       = module.rg.groups.demo.location
+  resource_group_name = module.rg.groups.demo.name
+  location            = module.rg.groups.demo.location
 
   configs = {
     pub1 = {
       name  = "${module.naming.public_ip.name}1"
       zones = ["1", "2", "3"]
-      prefix = {
-        prefix_length = 31
-      }
     }
     pub2 = {
       name  = "${module.naming.public_ip.name}2"
       zones = ["1", "2", "3"]
-      prefix = {
-        prefix_length = 31
-      }
     }
   }
 }
@@ -69,8 +63,6 @@ module "public_ips" {
 module "firewall" {
   source  = "cloudnationhq/fw/azure"
   version = "~> 3.0"
-
-  naming = local.naming
 
   instance = {
     name                = module.naming.firewall.name
