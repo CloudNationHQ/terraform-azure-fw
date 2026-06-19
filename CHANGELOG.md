@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.2.0](https://github.com/CloudNationHQ/terraform-azure-fw/compare/v3.1.0...v3.2.0) (2026-06-19)
+
+
+### Features
+
+* add fw rule direct (classic) rule collections on vnet submodule and example ([#55](https://github.com/CloudNationHQ/terraform-azure-fw/issues/55)) ([4866dc6](https://github.com/CloudNationHQ/terraform-azure-fw/commit/4866dc6010f9870fde548b9ae79ae71e426695d1))
+* **deps:** bump github.com/cloudnationhq/az-cn-go-validor in /tests ([#54](https://github.com/CloudNationHQ/terraform-azure-fw/issues/54)) ([a151c04](https://github.com/CloudNationHQ/terraform-azure-fw/commit/a151c046cc1d81573f6ab38dc887310047e5c047))
+* **deps:** bump golang.org/x/crypto from 0.36.0 to 0.45.0 in /tests ([#53](https://github.com/CloudNationHQ/terraform-azure-fw/issues/53)) ([f31583b](https://github.com/CloudNationHQ/terraform-azure-fw/commit/f31583b1918ae2fe0bc4a9d747a6fe5022866f69))
+
 ## [3.1.0](https://github.com/CloudNationHQ/terraform-azure-fw/compare/v3.0.0...v3.1.0) (2025-10-21)
 
 
