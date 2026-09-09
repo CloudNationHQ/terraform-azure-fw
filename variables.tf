@@ -1,4 +1,4 @@
-variable "instance" {
+variable "firewall" {
   description = "Contains all firewall configuration"
   type = object({
     name                = string
@@ -7,7 +7,7 @@ variable "instance" {
     sku_tier            = string
     sku_name            = string
     firewall_policy_id  = optional(string)
-    dns_proxy_enabled   = optional(bool, false)
+    dns_proxy_enabled   = optional(bool)
     dns_servers         = optional(list(string))
     threat_intel_mode   = optional(string)
     private_ip_ranges   = optional(list(string))
@@ -15,7 +15,7 @@ variable "instance" {
     tags                = optional(map(string))
     virtual_hub = optional(object({
       virtual_hub_id  = string
-      public_ip_count = optional(number, 1)
+      public_ip_count = optional(number)
     }))
     management_ip_configuration = optional(object({
       name                 = string
@@ -30,21 +30,16 @@ variable "instance" {
   })
 
   validation {
-    condition     = var.instance.location != null || var.location != null
+    condition     = var.firewall.location != null || var.location != null
     error_message = "location must be provided either in the instance object or as a separate variable."
   }
 
   validation {
-    condition     = var.instance.resource_group_name != null || var.resource_group_name != null
+    condition     = var.firewall.resource_group_name != null || var.resource_group_name != null
     error_message = "resource group name must be provided either in the instance object or as a separate variable."
   }
 }
 
-variable "naming" {
-  description = "contains naming convention"
-  type        = map(string)
-  default     = {}
-}
 
 variable "location" {
   description = "default azure region to be used."

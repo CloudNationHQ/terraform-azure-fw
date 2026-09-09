@@ -1,15 +1,3 @@
-variable "firewall_name" {
-  description = "The name of the Azure Firewall to which the rule collections will be applied."
-  type        = string
-  default     = null
-}
-
-variable "resource_group_name" {
-  description = "The name of the resource group in which the firewall exists."
-  type        = string
-  default     = null
-}
-
 variable "collections" {
   description = "Contains all classic (non-policy) firewall rule collections config"
   type = object({
@@ -91,4 +79,16 @@ variable "collections" {
     ])
     error_message = "resource_group_name must be set on each collection or provided via the top-level resource_group_name."
   }
+}
+
+variable "firewall_name" {
+  description = "The name of the Azure Firewall to which the rule collections will be applied."
+  type        = string
+  default     = null
+}
+
+variable "resource_group_name" {
+  description = "The name of the resource group in which the firewall exists."
+  type        = string
+  default     = null
 }

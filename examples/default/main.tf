@@ -1,13 +1,13 @@
 module "naming" {
   source  = "cloudnationhq/naming/azure"
-  version = "~> 0.25"
+  version = "~> 0.32"
 
   suffix = ["demo", "dev"]
 }
 
 module "rg" {
   source  = "cloudnationhq/rg/azure"
-  version = "~> 2.0"
+  version = "~> 3.0"
 
   groups = {
     demo = {
@@ -19,9 +19,9 @@ module "rg" {
 
 module "firewall" {
   source  = "cloudnationhq/fw/azure"
-  version = "~> 3.0"
+  version = "~> 4.0"
 
-  instance = {
+  firewall = {
     resource_group_name = module.rg.groups.demo.name
     location            = module.rg.groups.demo.location
     name                = module.naming.firewall.name
