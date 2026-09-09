@@ -7,11 +7,11 @@ resource "azurerm_firewall_network_rule_collection" "this" {
   )
 
   azure_firewall_name = coalesce(
-    lookup(each.value, "azure_firewall_name", null), var.firewall_name
+    each.value.azure_firewall_name, var.firewall_name
   )
 
   resource_group_name = coalesce(
-    lookup(each.value, "resource_group_name", null), var.resource_group_name
+    each.value.resource_group_name, var.resource_group_name
   )
 
   priority = each.value.priority
@@ -51,11 +51,11 @@ resource "azurerm_firewall_nat_rule_collection" "this" {
   )
 
   azure_firewall_name = coalesce(
-    lookup(each.value, "azure_firewall_name", null), var.firewall_name
+    each.value.azure_firewall_name, var.firewall_name
   )
 
   resource_group_name = coalesce(
-    lookup(each.value, "resource_group_name", null), var.resource_group_name
+    each.value.resource_group_name, var.resource_group_name
   )
 
   priority = each.value.priority
@@ -93,11 +93,11 @@ resource "azurerm_firewall_application_rule_collection" "this" {
   )
 
   azure_firewall_name = coalesce(
-    lookup(each.value, "azure_firewall_name", null), var.firewall_name
+    each.value.azure_firewall_name, var.firewall_name
   )
 
   resource_group_name = coalesce(
-    lookup(each.value, "resource_group_name", null), var.resource_group_name
+    each.value.resource_group_name, var.resource_group_name
   )
 
   priority = each.value.priority

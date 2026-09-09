@@ -1,13 +1,13 @@
 module "naming" {
   source  = "cloudnationhq/naming/azure"
-  version = "~> 0.24"
+  version = "~> 0.32"
 
   suffix = ["demo", "dev"]
 }
 
 module "rg" {
   source  = "cloudnationhq/rg/azure"
-  version = "~> 2.0"
+  version = "~> 3.0"
 
   groups = {
     demo = {
@@ -19,9 +19,8 @@ module "rg" {
 
 module "network" {
   source  = "cloudnationhq/vnet/azure"
-  version = "~> 9.0"
+  version = "~> 10.0"
 
-  naming = local.naming
 
   vnet = {
     name                = module.naming.virtual_network.name
@@ -40,14 +39,13 @@ module "network" {
 
 module "public_ip" {
   source  = "cloudnationhq/pip/azure"
-  version = "~> 4.0"
+  version = "~> 5.0"
 
-  naming = local.naming
 
   resource_group_name = module.rg.groups.demo.name
   location            = module.rg.groups.demo.location
 
-  configs = {
+  public_ips = {
     pub1 = {
       name  = module.naming.public_ip.name
       zones = ["1", "2", "3"]
@@ -56,9 +54,10 @@ module "public_ip" {
 }
 
 module "firewall" {
-  source = "../../"
+  source  = "cloudnationhq/fw/azure"
+  version = "~> 4.0"
 
-  instance = {
+  firewall = {
     name                = module.naming.firewall.name
     resource_group_name = module.rg.groups.demo.name
     location            = module.rg.groups.demo.location
@@ -68,7 +67,7 @@ module "firewall" {
     ip_configurations = {
       pub1 = {
         subnet_id            = module.network.subnets.fw1.id
-        public_ip_address_id = module.public_ip.configs.pub1.id
+        public_ip_address_id = module.public_ip.public_ips.pub1.id
       }
     }
   }
@@ -76,10 +75,78 @@ module "firewall" {
 
 module "direct_rule_collections" {
   source  = "cloudnationhq/fw/azure//modules/direct-rule-collections"
-  version = "~> 3.0"
+  version = "~> 4.0"
 
-  firewall_name       = module.firewall.instance.name
+  firewall_name       = module.firewall.firewall.name
   resource_group_name = module.rg.groups.demo.name
 
-  collections = local.collections
+  collections = {
+    network_rule_collections = {
+      netw_rules = {
+        name     = "netwrules"
+        priority = 7000
+        action   = "Allow"
+        rules = {
+          rule1 = {
+            protocols             = ["TCP"]
+            destination_ports     = ["*"]
+            destination_addresses = ["192.168.1.0/24"]
+            source_addresses      = ["10.0.0.0/8"]
+          }
+          rule2 = {
+            protocols             = ["TCP"]
+            destination_ports     = ["*"]
+            destination_addresses = ["192.168.2.0/24"]
+            source_addresses      = ["172.16.0.0/12"]
+          }
+        }
+      }
+    }
+    nat_rule_collections = {
+      nat_rules = {
+        name     = "natrules"
+        priority = 6500
+        action   = "Dnat"
+        rules = {
+          rule1 = {
+            protocols             = ["TCP"]
+            source_addresses      = ["*"]
+            destination_ports     = ["8080"]
+            destination_addresses = [module.public_ip.public_ips.pub1.ip_address]
+            translated_port       = "80"
+            translated_address    = "10.18.1.10"
+          }
+        }
+      }
+    }
+    application_rule_collections = {
+      app_rules = {
+        name     = "apprules"
+        priority = 6000
+        action   = "Allow"
+        rules = {
+          rule1 = {
+            source_addresses = ["10.0.0.1"]
+            target_fqdns     = ["*.microsoft.com"]
+            protocols = [
+              {
+                type = "Https"
+                port = 443
+              }
+            ]
+          }
+          rule2 = {
+            source_addresses = ["10.0.0.1"]
+            target_fqdns     = ["*.bing.com"]
+            protocols = [
+              {
+                type = "Https"
+                port = 443
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
 }
