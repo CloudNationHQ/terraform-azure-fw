@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.1.0](https://github.com/CloudNationHQ/terraform-azure-fw/compare/v4.0.0...v4.1.0) (2026-10-20)
+
+
+### Features
+
+* **deps:** bump github.com/klauspost/compress in /tests ([#62](https://github.com/CloudNationHQ/terraform-azure-fw/issues/62)) ([b8c7f30](https://github.com/CloudNationHQ/terraform-azure-fw/commit/b8c7f3013a10b46b0d21f82e311ef4fc286a4e17))
+
 ## [4.0.0](https://github.com/CloudNationHQ/terraform-azure-fw/compare/v3.2.0...v4.0.0) (2026-09-09)
 
 
